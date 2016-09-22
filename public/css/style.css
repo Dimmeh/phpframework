@@ -1,0 +1,224 @@
+/* Setup */
+
+@font-face {
+    font-family: "Open Sans";
+    src: url('../fonts/OpenSans-Regular.ttf');
+}
+
+@font-face {
+    font-family: "Goudy Old Style Bold";
+    src: url('../fonts/Goudosb.ttf');
+}
+
+*{
+    margin:0;
+    padding:0;
+    font-family: "Open Sans";
+}
+
+#menuContainer a.active {
+    background: #70757b;
+    color: white;
+}
+
+.center{
+    /* width:67%; */
+    padding: 6%;
+}
+
+
+/* Home page | Header */
+
+
+.stickyWrapper{position: relative;}
+
+header{
+    color: white;
+    width: 100%;
+}
+
+.main{
+    background: url('../images/mobile/1920.png') no-repeat;
+}
+
+.flex{
+    background-size: cover;
+    display: flex;
+    flex-flow: column wrap;
+}
+
+.menu {
+    position: fixed;
+    width: 100%;
+    top: 30pt;
+    left: 0%;
+    z-index: 98;
+}
+
+.menu:hover{
+    cursor: pointer;
+}
+
+.main p {
+    font-size: 18pt;
+    margin-bottom: 15pt;
+}
+
+.nav{
+    text-transform: uppercase;
+    background: rgba(0,0,0,0.7);
+    padding: 12px 12px 12px 15px;
+    top: 10pt;
+}
+
+.nav img{
+    vertical-align:middle;
+    padding-right: 6pt;
+    width: 20px;
+}
+
+.nav p {
+    display: inline-block;
+    vertical-align: middle;
+    color: white;
+}
+
+#menuContainer{
+    width:0%;
+    height:160vh;
+    background: #ffffff;
+    position: fixed;
+    top:0;
+    z-index:-1;
+}
+
+#menuContainer > *{
+    opacity: 0;
+}
+
+.title {
+    text-align: center;
+    padding: 20pt 0;
+    border-bottom: 1px solid #70757b;
+}
+
+.title h1 {
+    font-size: 13pt;
+}
+
+.title p {
+    font-size: 10pt;
+}
+
+#menuContainer a {
+    color: #70757b;
+    text-decoration: none;
+    display: block;
+    padding: 5pt 0 5pt 15pt;
+    border-bottom: 1px solid #70757b;
+    font-size: 10pt;
+}
+.titleMid{
+    width: 100%;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 16;
+    display: flex;
+}
+
+.main h1{
+    font-family: "Goudy Old Style Bold";
+    font-size: 5em;
+}
+
+button, #scrollDown{
+    background-color: transparent;
+    border: 3px solid white;
+    padding: 2% 4%;
+    color: white;
+    margin-top: 10pt;
+    display: inline-block;
+    text-decoration: none;
+    font-size: 10pt;
+}
+
+#section{
+    display:flex;
+}
+
+#howAreWe{
+    background:  rgba(0,0,0,0.5) url("../images/hwaBg.png") no-repeat;
+    background-size: cover;
+}
+
+.squareBox article {
+    color: white;
+    align-self: flex-end;
+}
+
+.squareBox {
+    position: relative;
+    height:964px;
+    width: 25%;
+    display: flex;
+}
+
+#whatWeDo{
+    background:  rgba(0,0,0,0.5) url("../images/wwdBg.png") no-repeat;
+    background-size: cover;
+}
+
+#reparation{
+    background: rgba(0,0,0,0.5) url("../images/repairBg.png") no-repeat;
+    background-size: cover;
+}
+
+#contact{
+    background-image: url('../images/ftbg.png');
+    color: #ffffff;
+}
+
+footer{
+    background-image: url('../images/ftbg.png');
+    color: #ffffff;
+    box-shadow: inset 1px 1px 10px rgba(0,0,0,0.5);
+    position: relative;
+    display: flex;
+}
+
+.footerTitle{
+    font-family: "Goudy Old Style Bold";
+    margin-bottom: 6pt;
+    display: inline-block;
+    width: 100%;
+}
+
+.footerTitle img{
+    margin-right: 6%;
+    vertical-align: middle;
+    width: 5%;
+}
+
+.footerTitle p{
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.footerSquare table{
+    width: 100%;
+}
+
+.up{
+    position:fixed;
+    bottom: 16pt;
+    right: 16pt;
+    width:30pt;
+    height:30pt;
+}
+
+#scrollUp {
+    width: 30pt;
+    height: 30pt;
+    display: block;
+}

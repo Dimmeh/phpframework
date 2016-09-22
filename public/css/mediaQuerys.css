@@ -1,0 +1,303 @@
+/* ----------- Mobiles ----------- */
+
+/* Portrait and Landscape */
+@media only screen
+and (min-device-width: 320px)
+and (max-device-width: 736px)
+{
+    .fullScreen{
+        background-size: cover;
+    }
+
+    /* Page wat we doen */
+
+    .slideContainer{
+        background: #2e353f;
+    }
+
+    .leftContainer{
+        width:100%;
+        background: rgba(0,0,0,0.4);
+    }
+
+    .main h1{
+        font-family: "Goudy Old Style Bold";
+        font-size: 2em;
+    }
+
+}
+
+/* Portrait */
+@media only screen
+and (min-device-width: 320px)
+and (max-device-width: 736px)
+and (orientation: portrait) {
+    /* Setup */
+    .center{
+        width: 90%;
+        padding: 5%;
+    }
+
+    /* Home page */
+    .main{
+        background:url('../images/mobile/500.png') no-repeat;
+        background-size: cover;
+    }
+
+    .nav img {
+        width: 5%;
+    }
+
+    .squareBox{
+        width:100%;
+        height: 320px;
+        font-size: 10pt;
+    }
+
+    .filter{
+        height:100%;
+        display: block;
+        background-color: rgba(0,0,0,0.3);
+    }
+
+    .reparation{
+        background:url('../images/mobile/repPortrait.png') no-repeat;
+        background-size: cover;
+    }
+
+    .reparation .titleMid{
+        color: white;
+    }
+
+    .reparation .titleMid h1{
+        font-size: 30pt;
+    }
+
+    .reparation .titleMid h3{
+        font-size: 10pt;
+    }
+
+    footer{
+        flex-direction: column;
+        text-align: center;
+    }
+
+    section.fullScreen.reparation {
+        display: flex;
+    }
+
+    .footerSquare {
+        font-size: 10pt;
+    }
+
+    table#time tr td:first-child {
+        text-align: right;
+        padding-right: 10pt;
+    }
+
+    table#time tr td:last-child {
+        text-align: left;
+        padding-left: 10pt;
+    }
+
+    .footerSquare:last-child .center{
+        padding-top:0;
+    }
+
+    .footerSquare:last-child .footerTitle{
+        border-top: 1px solid white;
+        padding-top: 10pt;
+    }
+
+    .facebook{
+        width:10%;
+    }
+
+    /* Page wat we doen */
+
+    .mainWhat{
+        background: url("../images/mobile/what500.png") no-repeat;
+        background-size: cover;
+    }
+
+    .leftContainer{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .leftContainer article{
+        flex-grow: 3;
+        overflow: scroll;
+        padding-top: 60pt;
+    }
+
+    .slideContainer{
+        position: relative;
+        overflow: hidden;
+        display: block;
+    }
+
+    .slideContainer ul{
+        width:1168px;
+        padding-left: 80pt;
+        vertical-align: baseline;
+    }
+
+    .slideContainer li{
+        display: inline-block;
+        vertical-align: bottom;
+        height: 70px;
+    }
+
+    .slideContainer img {
+        width: 60%;
+        border: 6pt solid white;
+        height: auto;
+    }
+
+    .seeMoreContainer{
+        position: relative;
+        width:30%;
+        vertical-align: baseline;
+    }
+
+    .seeMoreContainer span{
+        position: absolute;
+        top: 17pt;
+        left: 13pt;
+    }
+
+    .leftContainer p {
+        font-size: 10pt;
+    }
+
+
+
+}
+
+/* Landscape */
+@media only screen
+and (min-device-width: 320px)
+and (max-device-width: 736px)
+and (orientation: landscape) {
+    .main.fullScreen{
+        background: url('../images/mobile/736.png') no-repeat;
+        background-size: cover;
+    }
+
+    .nav img {
+        width: 3%;
+    }
+
+    .center{
+        width: 90%;
+        padding: 5%;
+    }
+
+    .squareBox{
+        width:100%;
+        height: 100vh;
+        font-size: 12pt;
+    }
+
+    .filter{
+        height:100%;
+        display: block;
+        background-color: rgba(0,0,0,0.3);
+    }
+
+    .reparation{
+        background:url('../images/mobile/repLandscape.png') no-repeat;
+        background-size:cover;
+    }
+
+    .reparation .titleMid{
+        color: white;
+    }
+
+    .reparation .titleMid h1{
+        font-size: 30pt;
+    }
+
+    .reparation .titleMid h3{
+        font-size: 10pt;
+    }
+    .footerSquare{
+        margin: 2%;
+        height: 179px;
+        border-right: 1px solid white;
+        flex-grow: 1;
+    }
+
+    .footerSquare:last-child{
+        border-right: none;
+    }
+
+    .footerSquare figure a img {
+        width: 20%;
+    }
+
+    .footerTitle img {
+        margin-right: 6%;
+        vertical-align: middle;
+        width: 8%;
+    }
+
+    .footerSquare table{
+        font-size: 8pt;
+    }
+
+    /* Page wat we doen */
+
+    .mainWhat{
+        background: url("../images/mobile/what736.png") no-repeat;
+        background-size: cover;
+    }
+
+    .leftContainer {
+        display: flex;
+    }
+
+    .leftContainer article {
+        padding-top: 60pt;
+        overflow: scroll;
+        font-size: 10pt;
+        width: 80%;
+    }
+
+    .slideContainer{
+        overflow: hidden;
+        width: 20%;
+        text-align: center;
+    }
+
+    .slideContainer ul{
+        padding-top: 15pt;
+        white-space: nowrap;
+        height:1000px;
+        width: 100%;
+    }
+
+    .slideContainer li{
+        width: 100%;
+        display: block;
+        text-align: center;
+    }
+
+    .slideContainer img {
+        width: 77%;
+        border: 5pt solid white;
+    }
+
+    .seeMoreContainer{
+        position: relative;
+        display: inline-block;
+        width: 100%;
+        height: auto;
+    }
+
+    .seeMoreContainer span{
+        padding-top: 15pt;
+        display: block;
+    }
+}
