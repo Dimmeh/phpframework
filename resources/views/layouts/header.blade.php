@@ -24,7 +24,13 @@
         <a href="wat-doen-we.php">Wat doen we?</a>
         <a href="reparatie.php">Reparatie</a>
     </div>
-
+    <main class="fullScreen">
+        <div class="menu">
+        <span class="nav" id="nav">
+            <img id="imgNav" src="images/hamburgerMenu.png" alt="">
+            <p>menu</p>
+        </span>
+        </div>
     @yield('content')
 
     <!-- JavaScripts -->
