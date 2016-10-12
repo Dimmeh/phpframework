@@ -19,3 +19,9 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 Route::get('/reparatie','ReparationController@index');
+Route::get('/dashboard', 'DashboardController@index');
+
+Route::post('/reparation',[
+    'as' => 'reparation.store',
+    'uses' => 'ReparationController@store'
+]);

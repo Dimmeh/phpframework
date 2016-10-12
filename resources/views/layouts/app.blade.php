@@ -12,7 +12,7 @@
 
     <!-- Styles -->
     <link href="css/app.css" rel="stylesheet">
-
+    <link href="css/style.css" rel="stylesheet">
     <!-- Scripts -->
     <script>
         window.Laravel = <?php echo json_encode([
@@ -44,8 +44,13 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
                         &nbsp;<li><a href="{{url('/reparatie')}}">Reparatie</a> </li>
-                    </ul>
+                    @if(Auth::user())
+                        @if (Auth::user()->role === 1)
+                            <li><a href="{{url('/dashboard')}}">Dashboard</a></li>
+                        @endif
+                    @endif
 
+                    </ul>
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->

@@ -65,7 +65,25 @@
                                 @endif
                             </div>
                         </div>
+                        @if(!Auth::guest())
+                            <div class="form-group{{ $errors->has('role') ? ' has-error' : '' }}">
+                                <label for="role">Rechten</label>
+                                <div class="col-md-6">
+                                    <select name="role" id="">
+                                        <option value="0">Gast</option>
+                                        <option value="1">Admin</option>
+                                    </select>
 
+                                    @if ($errors->has('role'))
+                                        <span class="help-block">
+                                        <strong>{{ $errors->first('role') }}</strong>
+                                    </span>
+                                    @endif
+                                </div>
+                            </div>
+                        @else
+                            <input type="hidden" value="0" name="role" placeholder="0">
+                        @endif
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
