@@ -15,9 +15,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Auth::routes();
 
 Route::get('/home', 'HomeController@index');
-
-Route::get('/bla' , function(){
-    echo "blablabla";
-});
+Route::get('/reparatie','ReparationController@index');
