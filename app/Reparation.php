@@ -8,6 +8,8 @@ class Reparation extends Model
 {
     use Notifiable;
 
+    protected $table = 'reparations';
+
     /**
      * The attributes that are mass assignable.
      *

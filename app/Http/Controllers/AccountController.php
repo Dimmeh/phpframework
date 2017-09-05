@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Dashboard;
 use App\Reparation;
 use Illuminate\Http\Request;
 
@@ -11,7 +10,7 @@ use Illuminate\Foundation\Auth\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
-class DashboardController extends Controller
+class AccountController extends Controller
 {
     public function __construct()
     {
@@ -24,8 +23,8 @@ class DashboardController extends Controller
     public function index()
     {
         if(Auth::user()->role == "Admin"){
-            $reparations = Reparation::all();
-            return view('dashboard\dashboard', compact('reparations'));
+            $accounts = User::all();
+            return view('accounts\account', compact('accounts'));
         }
         else{
             return view('welcome');
@@ -34,15 +33,15 @@ class DashboardController extends Controller
     }
 
     public function show($id){
-        $rep = Reparation::find($id);
-        $url = '/dashboard/delete/'.$rep->id;
-        return view('dashboard\details\show', compact('rep', 'url'));
+        $account = User::find($id);
+        $url = '/account/delete/'.$account->id;
+        return view('accounts\details.show', compact('account', 'url'));
     }
 
     public function edit($id){
-        $rep = Reparation::find($id);
+        $account = User::find($id);
 
-        return view('dashboard\details\detail', compact('rep'));
+        return view('auth\register', compact('account'));
     }
 
     /**
@@ -50,27 +49,28 @@ class DashboardController extends Controller
      * @param $id
      */
     public function update(Request $request, $id){
-        $rep = Reparation::find($id);
+        $account = User::find($id);
 
         $this->validate($request,[
             'name' => 'required',
             'email' => 'required',
-            'phone' => 'required'
+            'phone' => 'required',
+            'role' => 'required'
         ]);
 
         $input = $request->all();
-        $rep->fill($input)->save();
+        $account->fill($input)->save();
 
-        Session::flash('flash_message', 'Uw reparatie is bewerkt.');
+        Session::flash('flash_message', 'Accountnummer '.$account->id.' is bewerkt.');
 
-        return redirect()->route('dashboard');
+        return redirect()->route('account');
 
     }
 
     public function delete($id){
-        $rep = Reparation::find($id);
-        $rep->delete();
-        return redirect()->route('dashboard');
+        $account = Reparation::find($id);
+        $account->delete();
+        return redirect()->route('account');
     }
 
 

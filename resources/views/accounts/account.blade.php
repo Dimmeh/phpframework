@@ -9,22 +9,24 @@
         @endif
         <table class="table table-striped">
             <tr>
-                <th>#Ordernummer</th>
+                <th>#Accountnummer</th>
                 <th>Naam</th>
                 <th>E-mailadres</th>
                 <th>Telefoonnummer</th>
+                <th>Rechten</th>
                 <th></th>
             </tr>
 
-            @foreach($reparations as $rep)
-            <tr>
-                <td>{{$rep->id}}</td>
-                <td>{{$rep->name}}</td>
-                <td>{{$rep->email}}</td>
-                <td>{{$rep->phone}}</td>
-                <td><a href="{{url('/dashboard/'.$rep->id)}}" class="btn btn-info">Meer details</a></td>
+            @foreach($accounts as $account)
+                <tr>
+                    <td>{{$account->id}}</td>
+                    <td>{{$account->name}}</td>
+                    <td>{{$account->email}}</td>
+                    <td>{{$account->phone}}</td>
+                    <td>{{$account->role}}</td>
+                    <td><a href="{{url('/account/'.$account->id)}}" class="btn btn-info">Meer details</a></td>
 
-            </tr>
+                </tr>
             @endforeach
         </table>
 

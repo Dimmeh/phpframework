@@ -11,10 +11,10 @@
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                            <label for="name" class="col-md-4 control-label">Name</label>
+                            <label for="name" class="col-md-4 control-label">Naam</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
+                                <input id="name" type="text" class="form-control" name="name" @if(!Auth::guest()) value="{{Auth::user()->name}}"  @endif required autofocus>
 
                                 @if ($errors->has('name'))
                                     <span class="help-block">
@@ -25,10 +25,10 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
+                            <label for="email" class="col-md-4 control-label">E-mailadres</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
+                                <input id="email" type="email" class="form-control" name="email" @if(!Auth::guest()) value="{{Auth::user()->email}}"  @endif required>
 
                                 @if ($errors->has('email'))
                                     <span class="help-block">
@@ -38,8 +38,22 @@
                             </div>
                         </div>
 
+                        <div class="form-group{{ $errors->has('phone') ? ' has-error' : '' }}">
+                            <label for="phone" class="col-md-4 control-label">Telefoonnummer</label>
+
+                            <div class="col-md-6">
+                                <input id="phone" type="text" class="form-control" name="phone" @if(!Auth::guest()) value="{{Auth::user()->phone}}"  @endif required>
+
+                                @if ($errors->has('phone'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('phone') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+                        @if(Auth::guest())
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label for="password" class="col-md-4 control-label">Password</label>
+                            <label for="password" class="col-md-4 control-label">Wachtwoord</label>
 
                             <div class="col-md-6">
                                 <input id="password" type="password" class="form-control" name="password" required>
@@ -53,7 +67,7 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
-                            <label for="password-confirm" class="col-md-4 control-label">Confirm Password</label>
+                            <label for="password-confirm" class="col-md-4 control-label">Bevestig wachtwoord</label>
 
                             <div class="col-md-6">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
@@ -65,13 +79,14 @@
                                 @endif
                             </div>
                         </div>
+                        @endif
                         @if(!Auth::guest())
                             <div class="form-group{{ $errors->has('role') ? ' has-error' : '' }}">
                                 <label for="role">Rechten</label>
                                 <div class="col-md-6">
                                     <select name="role" id="">
-                                        <option value="0">Gast</option>
-                                        <option value="1">Admin</option>
+                                        <option value="Gast" @if(Auth::user()->role === "Gast") selected @endif>Gast</option>
+                                        <option value="Admin" @if(Auth::user()->role === "Admin") selected @endif>Admin</option>
                                     </select>
 
                                     @if ($errors->has('role'))
@@ -87,7 +102,11 @@
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
-                                    Register
+                                    @if(Auth::guest())
+                                        Registreren
+                                    @else
+                                        Bewerken
+                                    @endif
                                 </button>
                             </div>
                         </div>
