@@ -1,58 +1,47 @@
-<nav class="navbar navbar-default navbar-static-top">
-    <div class="container">
-        <div class="navbar-header">
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="nav-header">
 
-            <!-- Collapsed Hamburger -->
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
-                <span class="sr-only">Toggle Navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                    <a href="{{route('blog.index')}}" class="navbar-brand">Laravel Guide</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="{{route('reparation.index')}}">Reparatie</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{route('other.about')}}">Over ons</a>
+                </li>
+                @if(!Auth::check())
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{route('register')}}">Register</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{route('login')}}">Login</a>
+                    </li>
+                @else
+                    @if(Auth::user()->role == 10)
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{route('admin.index')}}">Admin</a>
+                        </li>
+                    @endif
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{route('account.index')}}">Mijn Account</a>
+                    </li>
 
-            <!-- Branding Image -->
-            <a class="navbar-brand" href="{{ url('/') }}">
-                {{ config('app.name', 'Laravel') }}
-            </a>
-        </div>
-
-        <div class="collapse navbar-collapse" id="app-navbar-collapse">
-            <!-- Left Side Of Navbar -->
-            <ul class="nav navbar-nav">
-                &nbsp;<li><a href="{{url('/reparatie')}}">Reparatie</a> </li>
-                <li><a href="{{url('/dashboard')}}">Dashboard</a></li>
-                <li><a href="{{url('/account')}}">Accounts</a></li>
-            </ul>
-            <!-- Right Side Of Navbar -->
-            <ul class="nav navbar-nav navbar-right">
-                <!-- Authentication Links -->
-                    <li><a href="{{ url('/login') }}">Login</a></li>
-                    <li><a href="{{ url('/register') }}">Register</a></li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" id="drop1" data-toggle="dropdown" role="button" aria-expanded="false">
-                            Dimmy <span class="caret"></span>
+                    <li class="nav-item">
+                        <a class="nav-link"  href="{{ route('logout') }}"
+                           onclick="event.preventDefault();
+                                                         document.getElementById('logout-form').submit();">
+                            Logout
                         </a>
 
-                        <ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
-                            <li>
-                                <a href="{{ url('/logout') }}"
-                                   onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                    Logout
-                                </a>
-
-                                <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
-                                    {{ csrf_field() }}
-                                </form>
-                            </li>
-                        </ul>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            {{ csrf_field() }}
+                        </form>
                     </li>
+                @endif
             </ul>
         </div>
     </div>
 </nav>
-<!-- Latest compiled and minified JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-<script src="{{asset('js/main.js')}}" type="application/javascript"></script>
-</body>
-</html>

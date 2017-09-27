@@ -2,24 +2,34 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
-use App\Http\Requests;
 use App\Reparation;
-use Illuminate\Support\Facades\Input;
-use Illuminate\Support\Facades\Session;
+use Illuminate\Http\Request;
 
 class ReparationController extends Controller
 {
-    public function index(){
-        return view('reparation\reparation');
-    }
+    public function postReparationCreate(Request $request){
+        $this->validate($request, [
+            'inputSurname' => 'required',
+            'inputName' => 'required',
+            'inputEmailAddress' => 'required',
+            'inputPhone' => 'required',
+            'inputAddress' => 'required',
+            'inputCity' => 'required',
+            'inputZip' => 'required'
+        ]);
 
-    public function store(){
-        Reparation::create(Input::all());
+        $reparation = new Reparation([
+            'surname' => $request->input('inputSurname'),
+            'name' => $request->input('inputName'),
+            'email' => $request->input('inputEmailAddress'),
+            'phone' => $request->input('inputPhone'),
+            'address' => $request->input('inputAddress'),
+            'city' => $request->input('inputCity'),
+            'zipcode' => $request->input('inputZip'),
+            'description' => $request->input('repDescription')
+        ]);
 
-        Session::flash('flash_message', 'Uw reparatie is verzonden.');
-
-        return redirect()->back();
+        $reparation->save();
+        return redirect()->route('reparation.index')->with('info', 'Reparatie is verstuurd');
     }
 }
