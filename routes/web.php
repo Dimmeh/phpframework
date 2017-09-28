@@ -34,14 +34,19 @@ Route::get('reparation', function(){
     return view('reparation.index');
 })->name('reparation.index');
 
-Route::post('reparation/create',[
+Route::post('reparation/create/{role}',[
     'uses' => 'ReparationController@postReparationCreate',
     'as' => 'reparation.create'
 ]);
 
-Route::get('account',[
-    'uses' => 'AccountController@getAccountById',
-    'as' => 'account.index'
+Route::get('users/{id}',[
+    'uses' => 'UsersController@getUserById',
+    'as' => 'users.index'
+]);
+
+Route::get('users/edit/{id}',[
+    'uses' => ['UsersController@getUserById', 'UsersController@getMyReparations'],
+    'as' => 'users.edit'
 ]);
 
 Route::group(['prefix' => 'admin'], function(){
@@ -50,9 +55,49 @@ Route::group(['prefix' => 'admin'], function(){
         'as' => 'admin.index'
     ]);
 
-    Route::get('accounts',[
-        'uses' => 'AccountController@getAccounts',
-        'as' => 'admin.account'
+    Route::group(['prefix' => 'users'], function (){
+        Route::get('customers',[
+            'uses' => 'UsersController@getCustomers',
+            'as' => 'admin.users.customers'
+        ]);
+
+        Route::get('contributors',[
+            'uses' => 'UsersController@getContributors',
+            'as' => 'admin.users.contributors'
+        ]);
+
+        Route::get('create',function(){
+            return view('admin.users.create');
+        })->name('admin.users.create');
+    });
+
+    Route::group(['prefix' => 'reparation'], function (){
+
+        Route::get('edit/{id}', [
+            'uses' => 'ReparationController@getReparationById',
+            'as' => 'admin.reparation.edit'
+        ]);
+
+        Route::get('update', [
+            'uses' => 'ReparationController@putReparationUpdate',
+            'as' => 'admin.reparation.edit'
+        ]);
+
+        Route::post('update', [
+            'uses' => 'ReparationController@putReparationUpdate',
+            'as' => 'admin.reparation.edit'
+        ]);
+
+    });
+
+    Route::get('delete/{id}', [
+        'uses' => 'ReparationController@getReparationDelete',
+        'as' => 'admin.delete'
+    ]);
+
+    Route::get('reparations',[
+        'uses' => 'ReparationController@getReparations',
+        'as' => 'admin.reparations'
     ]);
 
     Route::get('create', [
@@ -64,27 +109,17 @@ Route::group(['prefix' => 'admin'], function(){
         'uses' => 'PostController@postAdminCreate',
         'as' => 'admin.create'
     ]);
-
-    Route::get('edit/{id}', [
-        'uses' => 'PostController@getAdminEdit',
-        'as' => 'admin.edit'
-    ]);
-
-    Route::get('delete/{id}', [
-        'uses' => 'PostController@getAdminDelete',
-        'as' => 'admin.delete'
-    ]);
+//
+//    Route::get('edit/{id}', [
+//        'uses' => 'PostController@getAdminEdit',
+//        'as' => 'admin.edit'
+//    ]);
 
     Route::post('edit', [
         'uses' => 'PostController@postAdminUpdate',
         'as' => 'admin.update'
     ]);
 });
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-
 
 Auth::routes();
 

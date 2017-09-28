@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Reparation extends Migration
+class Users extends Migration
 {
     /**
      * Run the migrations.
@@ -13,18 +13,20 @@ class Reparation extends Migration
      */
     public function up()
     {
-        Schema::create('reparations', function (Blueprint $table){
+        Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
-            $table->timestamps();
             $table->string('surname');
             $table->string('name');
-            $table->string('email');
             $table->string('phone');
-            $table->string('address');
+            $table->string('email');
             $table->string('city');
+            $table->string('address');
             $table->string('zipcode');
-            $table->text('description');
-            $table->integer('status')->default(1);
+            $table->integer('reparation_id')->nullable();
+            $table->string('password');
+            $table->rememberToken();
+            $table->timestamps();
+            $table->integer('role')->default(1);
         });
     }
 
@@ -35,6 +37,6 @@ class Reparation extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('reparations');
+        Schema::dropIfExists('users');
     }
 }
